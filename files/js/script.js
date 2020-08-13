@@ -1,10 +1,29 @@
-window.FOS = window.FOS || {};
+
+
+/* globals apex */
+
+var FOS = window.FOS || {};
 
 FOS.timing = (function () {
 
     //used by addTimer and removeTimer
     var timers = {};
 
+    /**
+     * A dynamic action to declaratively control the firing of following actions or performing
+     * repetetive actions using a timer
+     *
+     * @memberof FOS.timing
+     * @param {object}   daContext                      Dynamic Action context as passed in by APEX
+     * @param {object}   config                         Configuration object holding the configuration settings
+     * @param {string}   config.actionType              The timing action type: debounce, delay, throttle, addTimer, removeTimer
+     * @param {number}   [config.delay]                 The number of milliseconds to delay following actions this option applies to debounce, delay, throttle
+     * @param {string}   [config.daId]                  A unique identifier for the delay/throttle actions
+     * @param {boolean}  [config.fireImmediately]       true/false to fire the debounced actions immediately
+     * @param {string}   [config.timerName]             A unique name to identify the timer
+     * @param {number}   [config.interval]              The time (in milliseconds) the timer will fire the timeout tick event
+     * @param {number}   [config.repetitions]           The number of repetitions before the timer is removed, if undefined it will be infinite
+     */
     function action(daContext, config) {
 
         apex.debug.info('FOS - Timing Actions', config);
@@ -34,70 +53,81 @@ FOS.timing = (function () {
             case 'removeTimer':
                 FOS.timing.removeTimer();
                 break;
-            default:
-                break;
         }
-    }
-
-    function debounce(daContext, config) {
-        let me = this;
-
-        function debounceFn(callback, wait) {
-            let timeout;
-            return (...args) => {
-                const context = this;
-                clearTimeout(timeout);
-                timeout = setTimeout(() => callback.apply(context, args), wait);
-            }
-        }
-        // if we don't have a debounce handler
-        if (typeof me[config.daId] != "function") {
-            me[config.daId] = debounceFn((daContext) => {
-                // ensure debounce function is recreated to fire immediately again on next call
-                if (config.fireImmediately) this[config.fnId] = undefined;
-                apex.da.resume(daContext.resumeCallback, false);
-            }, config.delay);
-            if (config.fireImmediately) {
-                apex.da.resume(daContext.resumeCallback, false);
-            }
-        }
-        // Call our debounced function
-        me[config.daId].call(me, daContext);
-
     }
 
     function delay(daContext, config) {
-        let me = this;
-
         // Call our delayed function
-        setTimeout(() => { apex.da.resume(daContext.resumeCallback, false); }, config.delay);
+        setTimeout(function () {
+            apex.da.resume(daContext.resumeCallback, false);
+        }, config.delay);
+    }
 
+    function debounce(daContext, config) {
+        var me = this;
+
+        function debounceFn(callback, wait) {
+            var _this = this;
+
+            var timeout;
+            return function () {
+                for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+                    args[_key] = arguments[_key];
+                }
+
+                var context = _this;
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    return callback.apply(context, args);
+                }, wait);
+            };
+        } // if we don't have a debounce handler
+
+
+        if (typeof me[config.daId] != "function") {
+            me[config.daId] = debounceFn(function (daContext) {
+                // ensure debounce function is recreated to fire immediately again on next call
+                if (config.fireImmediately) me[config.fnId] = undefined;
+                apex.da.resume(daContext.resumeCallback, false);
+            }, config.delay);
+
+            if (config.fireImmediately) {
+                apex.da.resume(daContext.resumeCallback, false);
+            }
+        } // Call our debounced function
+
+
+        me[config.daId].call(me, daContext);
     }
 
     function throttle(daContext, config) {
-        let me = this;
+        var me = this;
 
-        const throttle = (func, wait) => {
-            let inThrottle
+        var throttle = function (func, wait) {
+            var inThrottle;
             return function () {
-                const args = arguments
-                const context = this
+                var args = arguments;
+                var context = this;
+
                 if (!inThrottle) {
-                    func.apply(context, args)
-                    inThrottle = true
-                    setTimeout(() => inThrottle = false, wait)
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(function () {
+                        return inThrottle = false;
+                    }, wait);
                 }
-            }
-        }
-        // if we don't have a throttle handler initialize one
+            };
+        }; // if we don't have a throttle handler initialize one
+
+
         if (typeof me[config.daId] != "function") {
-            me[config.daId] = throttle((daContext) => {
+            me[config.daId] = throttle(function (daContext) {
                 apex.da.resume(daContext.resumeCallback, false);
             }, config.delay);
-        }
-        // Call our throttled function
-        me[config.daId].call(me, daContext);
+        } // Call our throttled function
 
+
+        me[config.daId].call(me, daContext);
     }
 
     function addTimer(config) {
@@ -114,8 +144,8 @@ FOS.timing = (function () {
         id = setInterval(function () {
             var t = timers[name];
 
-            console.log('increased it');
             t.repetitionCount++;
+            apex.debug.trace('... timer tick: ' + t.repetitionCount);
 
             apex.jQuery('body').trigger('timer-tick', [{
                 'name': name,
@@ -161,4 +191,7 @@ FOS.timing = (function () {
         removeTimer: removeTimer
     };
 })();
+
+
+
 

@@ -1,7 +1,9 @@
+
+
 {
     "name":"FOS - Timing Actions"
    ,"version":"20.1.0"
-   ,"description":"\u003Ch3\u003ETiming Actions Overview\u003C\/h3\u003E\r\n\u003Cp\u003EA set of actions which handle the timing of remaining actions within a Dynamic Action such as debounce, delay or throttle, as well an action to set up a timer. \u003Cstrong\u003ENote:\u003C\/strong\u003E you must enable\/check\/toggle the dynamic action \"Wait for result\" option for this plugin to work correctly.\u003C\/p\u003E\r\n\u003Ch3\u003EDelay Action\u003C\/h3\u003E\r\n\u003Cp\u003EDelays the execution of proceeding actions (i.e. higher sequenced) within your dynamic action based on the number of milliseconds provided. \u003C\/p\u003E\r\n\u003Ch3\u003EDebounce Action\u003C\/h3\u003E\r\n\u003Cp\u003EDebounces the execution of the of proceeding actions (i.e. higher sequenced) within a dynamic action. This means that you can ensure that when a dynamic action fires in quick succession it will not run the proceeding actions until X many milliseconds (which you define) from the last call has elapsed. You have the option of immediately executing the first call.\u003C\/p\u003E\r\n\u003Cp\u003E\u003Cstrong\u003ENote:\u003C\/strong\u003E there are times where throttling makes better sense than debouncing, so please also consider using the throttle action. You can read more about debouncing and throttling \u003Ca href=\"https:\/\/stackoverflow.com\/questions\/25991367\/difference-between-throttling-and-debouncing-a-function\"\u003Ehere\u003C\/a\u003E\u003C\/p\u003E\r\n\u003Ch3\u003EThrottle Action\u003C\/h3\u003E\r\n\u003Cp\u003EThrottles the execution of the proceeding actions (i.e. higher sequenced) within your dynamic action. For example: if you set this delay to 5000 milliseconds on the click event of a button that refreshes a grid, if you click the button repeatedly in quick succession the maximum you could refresh the grid is once every five seconds.\u003C\/p\u003E\r\n\u003Cp\u003E\u003Cstrong\u003ENote:\u003C\/strong\u003E there are times where debouncing makes better sense than throttling, so please also consider using the debounce action instead. You can read more about throttling and debouncing \u003Ca href=\"https:\/\/stackoverflow.com\/questions\/25991367\/difference-between-throttling-and-debouncing-a-function\"\u003Ehere\u003C\/a\u003E\u003C\/p\u003E\r\n\u003Ch3\u003ETimer Action\u003C\/h3\u003E\r\n\u003Cp\u003EThe timer action allows you to periodically fire other dynamic actions listening to the \u003Ci\u003ETimer Tick\u003C\/i\u003E or \u003Ci\u003ETimer Complete\u003C\/i\u003E events.\u003C\/p\u003E\r\n\u003Cul\u003E\r\n\u003Cli\u003EThe \u003Ci\u003ETimer Tick\u003C\/i\u003E fires upon every repetition after the timeout interval has elapsed.\u003C\/li\u003E\r\n\u003Cli\u003EThe \u003Ci\u003ETimer Complete\u003C\/i\u003E fires only once, after the last repetition. In case of an infinite timer i.e. \"no limit on repetitions\" then the event \u003Ci\u003ETimer Complete\u003C\/i\u003E never fires!\u003C\/li\u003E\r\n\u003C\/ul\u003E"
+   ,"description":"Debounce, throttle, delay, and a timer dynamic action to fine-control the execution of dynamic actions.\r\n\u003Ch4\u003EFree Plug-in under MIT License\u003C\/h4\u003E\r\n\u003Cp\u003E\r\nAll FOS plug-ins are released under MIT License, which essentially means it is free for everyone to use, no matter if commercial or private use. \r\n\u003C\/p\u003E\r\n\u003Ch4\u003EOverview\u003C\/h4\u003E\r\n\u003Cp\u003E\n    The \u003Cstrong\u003EFOS - Timing Actions\u003C\/strong\u003E dynamic action plug-in is our solution for controling the timing and frequency of the actions contained within a Dynamic Action such as debounce, delay or throttle. It also includes a Timer to automate the repetition of your dynamic actions. \n\u003C\/p\u003E\n\u003Ch3\u003EDelay Action\u003C\/h3\u003E\n\u003Cp\u003EDelays the execution of proceeding actions (i.e. higher sequenced) within your dynamic action based on the number of milliseconds provided. \u003C\/p\u003E\n\u003Ch3\u003EDebounce Action\u003C\/h3\u003E\n\u003Cp\u003EDebounces the execution of the of proceeding actions (i.e. higher sequenced) within a dynamic action. This means that you can ensure that when a dynamic action fires in quick succession it will not run the proceeding actions until X many milliseconds (which you define) from the last call has elapsed. You have the option of immediately executing the first call.\u003C\/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ENote:\u003C\/strong\u003E there are times where throttling makes better sense than debouncing, so please also consider using the throttle action. You can read more about debouncing and throttling \u003Ca href=\"https:\/\/stackoverflow.com\/questions\/25991367\/difference-between-throttling-and-debouncing-a-function\"\u003Ehere\u003C\/a\u003E\u003C\/p\u003E\n\u003Ch3\u003EThrottle Action\u003C\/h3\u003E\n\u003Cp\u003EThrottles the execution of the proceeding actions (i.e. higher sequenced) within your dynamic action. For example: if you set this delay to 5000 milliseconds on the click event of a button that refreshes a grid, if you click the button repeatedly in quick succession the maximum you could refresh the grid is once every five seconds.\u003C\/p\u003E\n\u003Cp\u003E\u003Cstrong\u003ENote:\u003C\/strong\u003E there are times where debouncing makes better sense than throttling, so please also consider using the debounce action instead. You can read more about throttling and debouncing \u003Ca href=\"https:\/\/stackoverflow.com\/questions\/25991367\/difference-between-throttling-and-debouncing-a-function\"\u003Ehere\u003C\/a\u003E\u003C\/p\u003E\n\u003Ch3\u003ETimer Action\u003C\/h3\u003E\n\u003Cp\u003EThe timer action allows you to periodically fire other dynamic actions listening to the \u003Ci\u003ETimer Tick\u003C\/i\u003E or \u003Ci\u003ETimer Complete\u003C\/i\u003E events.\u003C\/p\u003E\n\u003Cul\u003E\n\u003Cli\u003EThe \u003Ci\u003ETimer Tick\u003C\/i\u003E fires upon every repetition after the timeout interval has elapsed.\u003C\/li\u003E\n\u003Cli\u003EThe \u003Ci\u003ETimer Complete\u003C\/i\u003E fires only once, after the last repetition. In case of an infinite timer i.e. \"no limit on repetitions\" then the event \u003Ci\u003ETimer Complete\u003C\/i\u003E never fires!\u003C\/li\u003E\n\u003C\/ul\u003E"
    ,"keywords":[
         "throttle"
        ,"debounce"
@@ -10,7 +12,7 @@
     ]
    ,"license":"MIT"
    ,"commercial":"Yes"
-   ,"homepage":"https:\/\/foex.at\/fos"
+   ,"homepage":"https:\/\/foex.at\/fos\/"
    ,"bugs":{
         "url":"https:\/\/github.com\/foex-open-source\/fos-timing-actions\/issues"
        ,"email":"support@fos.world"
@@ -27,8 +29,7 @@
     }
    ,"oracle":{
         "versions":[
-            "11.2.0.4"
-           ,"12.1.0.1"
+            "12.1.0.1"
            ,"12.2.0.1"
            ,"18.0.0.0"
            ,"19.0.0.0"
@@ -41,11 +42,13 @@
            ,"plugin":{
                 "internalName":"COM.FOS.TIMING_ACTIONS"
                ,"type":"dynamic action"
-               ,"demo":"https:\/\/fos.world\/ords\/f?p=1000:1060"
+               ,"demo":"https:\/\/fos.world\/ords\/f?p=10000:1060"
                ,"previewImage":"https:\/\/fos.world\/ords\/fos_master_ws\/fos-image\/COM.FOS.TIMING_ACTIONS"
             }
         }
     }
 }
+
+
 
 

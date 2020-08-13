@@ -1,10 +1,26 @@
+
+
 create or replace package body com_fos_timing_actions
 as
 
+-- =============================================================================
+--
+--  FOS = FOEX Open Source (fos.world), by FOEX GmbH, Austria (www.foex.at)
+--
+--  A set of actions which handle the timing of remaining actions within a
+--  Dynamic Action such as debounce, delay or throttle, as well an action to
+--  set up a timer.
+--
+--  License: MIT
+--
+--  GitHub: https://github.com/foex-open-source/fos-timing-actions
+--
+-- =============================================================================
+
 function render
-    ( p_dynamic_action apex_plugin.t_dynamic_action
-    , p_plugin         apex_plugin.t_plugin
-    )
+  ( p_dynamic_action apex_plugin.t_dynamic_action
+  , p_plugin         apex_plugin.t_plugin
+  )
 return apex_plugin.t_dynamic_action_render_result
 as
     l_result apex_plugin.t_dynamic_action_render_result;
@@ -25,7 +41,8 @@ as
 begin
 
     --debug
-    if apex_application.g_debug then
+    if apex_application.g_debug
+    then
         apex_plugin_util.debug_dynamic_action
             ( p_dynamic_action => p_dynamic_action
             , p_plugin         => p_plugin
@@ -66,10 +83,12 @@ begin
 
     apex_json.free_output;
     return l_result;
-end;
+end render;
 
 
 end;
 /
+
+
 
 

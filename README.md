@@ -1,9 +1,18 @@
+
+
 ## FOS - Timing Actions
 
 ![](https://img.shields.io/badge/Plug--in_Type-Dynamic_Action-orange.svg) ![](https://img.shields.io/badge/APEX-19.2-success.svg) ![](https://img.shields.io/badge/APEX-20.1-success.svg)
 
-<h3>Timing Actions Overview</h3>
-<p>A set of actions which handle the timing of remaining actions within a Dynamic Action such as debounce, delay or throttle, as well an action to set up a timer. <strong>Note:</strong> you must enable/check/toggle the dynamic action "Wait for result" option for this plugin to work correctly.</p>
+Debounce, throttle, delay, and a timer dynamic action to fine-control the execution of dynamic actions.
+<h4>Free Plug-in under MIT License</h4>
+<p>
+All FOS plug-ins are released under MIT License, which essentially means it is free for everyone to use, no matter if commercial or private use.
+</p>
+<h4>Overview</h4>
+<p>
+    The <strong>FOS - Timing Actions</strong> dynamic action plug-in is our solution for controling the timing and frequency of the actions contained within a Dynamic Action such as debounce, delay or throttle. It also includes a Timer to automate the repetition of your dynamic actions.
+</p>
 <h3>Delay Action</h3>
 <p>Delays the execution of proceeding actions (i.e. higher sequenced) within your dynamic action based on the number of milliseconds provided. </p>
 <h3>Debounce Action</h3>
@@ -22,4 +31,6 @@
 ## License
 
 MIT
+
+
 
