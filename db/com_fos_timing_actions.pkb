@@ -1,5 +1,3 @@
-
-
 create or replace package body com_fos_timing_actions
 as
 
@@ -88,7 +86,5 @@ end render;
 
 end;
 /
-
-
 
 

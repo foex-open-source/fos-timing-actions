@@ -1,5 +1,3 @@
-
-
 prompt --application/set_environment
 set define off verify off feedback off
 whenever sqlerror exit sql.sqlcode rollback
@@ -36,13 +34,14 @@ prompt APPLICATION 102 - FOS Dev - Plugin Master
 --   Manifest
 --     PLUGIN: 61118001090994374
 --     PLUGIN: 134108205512926532
+--     PLUGIN: 547902228942303344
 --     PLUGIN: 168413046168897010
 --     PLUGIN: 13235263798301758
 --     PLUGIN: 37441962356114799
 --     PLUGIN: 1846579882179407086
 --     PLUGIN: 8354320589762683
 --     PLUGIN: 50031193176975232
---     PLUGIN: 34175298479606152
+--     PLUGIN: 106296184223956059
 --     PLUGIN: 35822631205839510
 --     PLUGIN: 2674568769566617
 --     PLUGIN: 14934236679644451
@@ -50,6 +49,7 @@ prompt APPLICATION 102 - FOS Dev - Plugin Master
 --     PLUGIN: 2657630155025963
 --     PLUGIN: 284978227819945411
 --     PLUGIN: 56714461465893111
+--     PLUGIN: 98648032013264649
 --   Manifest End
 --   Version:         19.2.0.00.18
 --   Instance ID:     250144500186934
@@ -159,29 +159,10 @@ wwv_flow_api.create_plugin(
 ,p_substitute_attributes=>false
 ,p_subscribe_plugin_settings=>true
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<p>',
-'    The <strong>FOS - Timing Actions</strong> dynamic action plug-in is our solution for controling the timing and frequency of the actions contained within a Dynamic Action such as debounce, delay or throttle. It also includes a Timer to automate th'
-||'e repetition of your dynamic actions. ',
-'</p>',
-'<h3>Delay Action</h3>',
-'<p>Delays the execution of proceeding actions (i.e. higher sequenced) within your dynamic action based on the number of milliseconds provided. </p>',
-'<h3>Debounce Action</h3>',
-'<p>Debounces the execution of the of proceeding actions (i.e. higher sequenced) within a dynamic action. This means that you can ensure that when a dynamic action fires in quick succession it will not run the proceeding actions until X many milliseco'
-||'nds (which you define) from the last call has elapsed. You have the option of immediately executing the first call.</p>',
-'<p><strong>Note:</strong> there are times where throttling makes better sense than debouncing, so please also consider using the throttle action. You can read more about debouncing and throttling <a href="https://stackoverflow.com/questions/25991367/'
-||'difference-between-throttling-and-debouncing-a-function">here</a></p>',
-'<h3>Throttle Action</h3>',
-'<p>Throttles the execution of the proceeding actions (i.e. higher sequenced) within your dynamic action. For example: if you set this delay to 5000 milliseconds on the click event of a button that refreshes a grid, if you click the button repeatedly '
-||'in quick succession the maximum you could refresh the grid is once every five seconds.</p>',
-'<p><strong>Note:</strong> there are times where debouncing makes better sense than throttling, so please also consider using the debounce action instead. You can read more about throttling and debouncing <a href="https://stackoverflow.com/questions/2'
-||'5991367/difference-between-throttling-and-debouncing-a-function">here</a></p>',
-'<h3>Timer Action</h3>',
-'<p>The timer action allows you to periodically fire other dynamic actions listening to the <i>Timer Tick</i> or <i>Timer Complete</i> events.</p>',
-'<ul>',
-'<li>The <i>Timer Tick</i> fires upon every repetition after the timeout interval has elapsed.</li>',
-'<li>The <i>Timer Complete</i> fires only once, after the last repetition. In case of an infinite timer i.e. "no limit on repetitions" then the event <i>Timer Complete</i> never fires!</li>',
-'</ul>'))
-,p_version_identifier=>'20.1.1'
+'<p>The <strong>FOS - Timing Actions</strong> dynamic action plug-in is our solution for controling the timing and frequency of the actions contained within a Dynamic Action such as debounce, delay or throttle. It also includes a Timer to automate the'
+||' repetition of your dynamic actions. ',
+'</p>'))
+,p_version_identifier=>'20.2.0'
 ,p_about_url=>'https://fos.world'
 ,p_plugin_comment=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '@fos-auto-return-to-page',
@@ -446,7 +427,6 @@ wwv_flow_api.g_varchar2_table(43) := '656E74733B0A202020202020202020202020202020
 wwv_flow_api.g_varchar2_table(44) := '6E632E6170706C7928636F6E746578742C2061726773293B0A2020202020202020202020202020202020202020696E5468726F74746C65203D20747275653B0A202020202020202020202020202020202020202073657454696D656F75742866756E6374';
 wwv_flow_api.g_varchar2_table(45) := '696F6E202829207B0A20202020202020202020202020202020202020202020202072657475726E20696E5468726F74746C65203D2066616C73653B0A20202020202020202020202020202020202020207D2C2077616974293B0A20202020202020202020';
 wwv_flow_api.g_varchar2_table(46) := '2020202020207D0A2020202020202020202020207D3B0A20202020202020207D3B202F2F20696620776520646F6E277420686176652061207468726F74746C652068616E646C657220696E697469616C697A65206F6E650A0A0A20202020202020206966';
-
 wwv_flow_api.g_varchar2_table(47) := '2028747970656F66206D655B636F6E6669672E646149645D20213D202266756E6374696F6E2229207B0A2020202020202020202020206D655B636F6E6669672E646149645D203D207468726F74746C652866756E6374696F6E20286461436F6E74657874';
 wwv_flow_api.g_varchar2_table(48) := '29207B0A20202020202020202020202020202020617065782E64612E726573756D65286461436F6E746578742E726573756D6543616C6C6261636B2C2066616C7365293B0A2020202020202020202020207D2C20636F6E6669672E64656C6179293B0A20';
 wwv_flow_api.g_varchar2_table(49) := '202020202020207D202F2F2043616C6C206F7572207468726F74746C65642066756E6374696F6E0A0A0A20202020202020206D655B636F6E6669672E646149645D2E63616C6C286D652C206461436F6E74657874293B0A202020207D0A0A202020206675';
@@ -455,6 +435,7 @@ wwv_flow_api.g_varchar2_table(51) := '6C2C0A2020202020202020202020206D6178526570
 wwv_flow_api.g_varchar2_table(52) := '65727329207B0A202020202020202020202020636C656172496E74657276616C2874696D6572735B6E616D655D2E6964293B0A202020202020202020202020617065782E64656275672E7472616365282754696D6572202227202B206E616D65202B2027';
 wwv_flow_api.g_varchar2_table(53) := '2220616C726561647920657869737473202D2072657374617274696E672069742E2E2E27293B0A20202020202020207D0A0A20202020202020206964203D20736574496E74657276616C2866756E6374696F6E202829207B0A2020202020202020202020';
 wwv_flow_api.g_varchar2_table(54) := '207661722074203D2074696D6572735B6E616D655D3B0A0A202020202020202020202020742E72657065746974696F6E436F756E742B2B3B0A202020202020202020202020617065782E64656275672E747261636528272E2E2E2074696D657220746963';
+
 wwv_flow_api.g_varchar2_table(55) := '6B3A2027202B20742E72657065746974696F6E436F756E74293B0A0A202020202020202020202020617065782E6A51756572792827626F647927292E74726967676572282774696D65722D7469636B272C205B7B0A202020202020202020202020202020';
 wwv_flow_api.g_varchar2_table(56) := '20276E616D65273A206E616D652C0A202020202020202020202020202020202774696D65724E616D65273A206E616D652C0A202020202020202020202020202020202774696D6572273A20740A2020202020202020202020207D5D293B0A0A2020202020';
 wwv_flow_api.g_varchar2_table(57) := '20202020202020696620286D617852657065746974696F6E7320262620742E72657065746974696F6E436F756E74203E3D20742E6D617852657065746974696F6E7329207B0A20202020202020202020202020202020617065782E6A5175657279282762';
@@ -573,7 +554,5 @@ end;
 /
 set verify on feedback on define on
 prompt  ...done
-
-
 
 

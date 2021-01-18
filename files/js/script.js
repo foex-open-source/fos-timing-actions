@@ -1,5 +1,3 @@
-
-
 /* globals apex */
 
 var FOS = window.FOS || {};
@@ -191,7 +189,5 @@ FOS.timing = (function () {
         removeTimer: removeTimer
     };
 })();
-
-
 
 
