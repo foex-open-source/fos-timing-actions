@@ -46,11 +46,13 @@ FOS.timing = (function () {
                 break;
             case 'addTimer':
                 FOS.timing.addTimer(config);
-                resumeCallback();
                 break;
             case 'removeTimer':
-                FOS.timing.removeTimer();
+                FOS.timing.removeTimer(config.timerName);
                 break;
+        }
+        if (['addTimer','removeTimer'].includes(config.actionType) && daContext.resumeCallback) {
+            apex.da.resume(daContext.resumeCallback, false);
         }
     }
 
