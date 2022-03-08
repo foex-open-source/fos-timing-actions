@@ -1,6 +1,6 @@
 {
     "name":"FOS - Timing Actions"
-   ,"version":"21.1.0"
+   ,"version":"21.2.0"
    ,"description":"Debounce, throttle, delay, and a timer dynamic action to fine-control the execution of dynamic actions.\r\n\u003Ch4\u003EFree Plug-in under MIT License\u003C\/h4\u003E\r\n\u003Cp\u003E\r\nAll FOS plug-ins are released under MIT License, which essentially means it is free for everyone to use, no matter if commercial or private use. \r\n\u003C\/p\u003E\r\n\u003Ch4\u003EOverview\u003C\/h4\u003E\r\n\u003Cp\u003EThe \u003Cstrong\u003EFOS - Timing Actions\u003C\/strong\u003E dynamic action plug-in is our solution for controling the timing and frequency of the actions contained within a Dynamic Action such as debounce, delay or throttle. It also includes a Timer to automate the repetition of your dynamic actions. \r\n\u003C\/p\u003E"
    ,"keywords":[
         "throttle"
@@ -32,12 +32,15 @@
            ,"12.2.0.1"
            ,"18.0.0.0"
            ,"19.0.0.0"
+           ,"21.0.0.0"
         ]
        ,"apex":{
             "versions":[
                 "19.2.0"
                ,"20.1.0"
                ,"20.2.0"
+               ,"21.1.0"
+               ,"21.2.0"
             ]
            ,"plugin":{
                 "internalName":"COM.FOS.TIMING_ACTIONS"
