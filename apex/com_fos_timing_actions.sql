@@ -171,7 +171,7 @@ wwv_flow_api.create_plugin(
 '<p>The <strong>FOS - Timing Actions</strong> dynamic action plug-in is our solution for controling the timing and frequency of the actions contained within a Dynamic Action such as debounce, delay or throttle. It also includes a Timer to automate the'
 ||' repetition of your dynamic actions. ',
 '</p>'))
-,p_version_identifier=>'21.2.0'
+,p_version_identifier=>'22.1.0'
 ,p_about_url=>'https://fos.world'
 ,p_plugin_comment=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '@fos-auto-return-to-page',
